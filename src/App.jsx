@@ -6,7 +6,7 @@ const profile = {
   email: "venkatasaiakhilanga@gmail.com",
   linkedin: "https://www.linkedin.com/in/akhil-anga",
   github: "https://github.com/Akhil-Anga",
-  resume: "/Venkata_Sai_Akhil_Anga_Resume.pdf",
+  resume: "/Venkata_Sai_Akhil_Anga_Software_Engineer_Resume.pdf",
 };
 
 const currentYear = new Date().getFullYear();
@@ -675,7 +675,7 @@ export default function App() {
                 <button onClick={() => scrollTo("projects")} className="rounded-full bg-slate-950 px-7 py-4 text-sm font-black text-white shadow-xl shadow-slate-300 transition hover:-translate-y-1 dark:bg-white dark:text-slate-950 dark:shadow-none">
                   Explore Projects →
                 </button>
-                <a href={profile.resume} download="Venkata_Sai_Akhil_Anga_Resume.pdf" className="rounded-full bg-indigo-600 px-7 py-4 text-sm font-black text-white shadow-xl shadow-indigo-200 transition hover:-translate-y-1 hover:bg-indigo-700 dark:bg-cyan-300 dark:text-slate-950 dark:shadow-none">
+                <a href={profile.resume} download="Venkata_Sai_Akhil_Anga_Software_Engineer_Resume.pdf" className="rounded-full bg-indigo-600 px-7 py-4 text-sm font-black text-white shadow-xl shadow-indigo-200 transition hover:-translate-y-1 hover:bg-indigo-700 dark:bg-cyan-300 dark:text-slate-950 dark:shadow-none">
                   Download Resume ↓
                 </a>
               </div>
