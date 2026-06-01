@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://akhil-anga.github.io/Portfolio",
+  "homepage": "https://akhilanga.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
