@@ -1,16 +1,184 @@
-# React + Vite
+# Akhil Anga – Software Engineer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Website: https://akhilanga.com
 
-Currently, two official plugins are available:
+A modern, interactive portfolio showcasing my experience as a Software Engineer with expertise in backend systems, cloud-native applications, distributed architectures, and AI-powered data products.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I am a Software Engineer with 4+ years of professional experience building scalable backend systems, microservices, cloud solutions, and data-driven applications.
 
-## Expanding the ESLint configuration
+This portfolio highlights:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Software Engineering projects
+- System Design experience
+- Machine Learning projects
+- Cloud & Infrastructure work
+- Professional experience
+- Education and technical skills
+
+---
+
+## Featured Projects
+
+### Machinery Fault Severity Intelligence
+
+Industrial machine fault classification platform built using vibration sensor data.
+
+#### Highlights
+
+- 10,000+ labeled samples
+- 99% classification accuracy
+- Feature Engineering + Machine Learning
+- Random Forest
+- XGBoost
+- LightGBM
+- MiniRocket
+- CNN Benchmarking
+
+#### Technologies
+
+- Python
+- MySQL
+- Redis
+- Jenkins
+- FFT Feature Engineering
+
+---
+
+### Microservices Backend System
+
+Distributed backend architecture demonstrating scalable service communication.
+
+#### Highlights
+
+- Event-driven architecture
+- Redis caching
+- Kafka messaging
+- AWS Lambda jobs
+- API Gateway integration
+
+#### Technologies
+
+- Node.js
+- Kafka
+- Redis
+- Docker
+- AWS
+
+---
+
+### Healthcare Admissions Analytics Platform
+
+Healthcare analytics platform transforming operational data into actionable insights.
+
+#### Highlights
+
+- PostgreSQL OLTP Design
+- dbt Transformations
+- Streamlit Dashboards
+- SQL Analytics
+
+#### Technologies
+
+- PostgreSQL
+- dbt
+- Streamlit
+- Docker
+
+---
+
+## Portfolio Features
+
+- Interactive Project Cards
+- System Architecture Visualizations
+- API Sandbox Playground
+- Dark / Light Theme
+- Responsive Design
+- Resume Download
+- Custom Domain Integration
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- React
+- Vite
+- JavaScript
+- TailwindCSS
+- Framer Motion
+
+### Backend
+
+- Node.js
+- Express.js
+- Python
+
+### Databases
+
+- MySQL
+- PostgreSQL
+- Redis
+
+### Cloud & DevOps
+
+- AWS
+- Docker
+- Jenkins
+- GitHub Pages
+
+---
+
+## Local Development
+
+Clone repository:
+
+```bash
+git clone https://github.com/Akhil-Anga/Portfolio.git
+cd Portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Build production version:
+
+```bash
+npm run build
+```
+
+Deploy:
+
+```bash
+npm run deploy
+```
+
+---
+
+## Contact
+
+### Akhil Anga
+
+- Portfolio: https://akhilanga.com
+- GitHub: https://github.com/Akhil-Anga
+- LinkedIn: https://www.linkedin.com/in/akhil-anga/
+- Email: venkatasaiakhilanga@gmail.com
+
+---
+
+## License
+
+This project is maintained for professional portfolio purposes.
