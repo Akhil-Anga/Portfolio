@@ -306,109 +306,125 @@ function DynamicBackground({ dark }) {
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <div className={`absolute inset-0 ${
         dark
-          ? "bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,.20),transparent_28%),radial-gradient(circle_at_80%_10%,rgba(99,102,241,.26),transparent_32%),linear-gradient(180deg,#020617_0%,#0f172a_100%)]"
-          : "bg-[radial-gradient(circle_at_18%_22%,rgba(125,211,252,.48),transparent_31%),radial-gradient(circle_at_78%_14%,rgba(129,140,248,.34),transparent_33%),linear-gradient(180deg,#f8fbff_0%,#eef4ff_100%)]"
+          ? "bg-[radial-gradient(circle_at_18%_16%,rgba(34,211,238,.18),transparent_24%),radial-gradient(circle_at_82%_8%,rgba(99,102,241,.24),transparent_28%),linear-gradient(180deg,#020617_0%,#0f172a_100%)]"
+          : "bg-[radial-gradient(circle_at_16%_18%,rgba(125,211,252,.42),transparent_28%),radial-gradient(circle_at_82%_10%,rgba(129,140,248,.30),transparent_30%),linear-gradient(180deg,#f8fbff_0%,#eef4ff_100%)]"
       }`} />
-      <div className="absolute left-[5%] top-[17%] h-[360px] w-[760px] animate-[pulse_5s_ease-in-out_infinite] rounded-full border-2 border-dashed border-indigo-400/45 dark:border-cyan-300/25" />
-      <div className="absolute right-[7%] top-[10%] h-[430px] w-[680px] animate-[spin_26s_linear_infinite] rounded-full border-2 border-dashed border-sky-400/40 dark:border-indigo-300/25" />
-      <div className="absolute left-[48%] top-[31%] h-3 w-3 animate-bounce rounded-full bg-cyan-400/60" />
-      <div className="absolute left-[9%] top-[25%] h-4 w-4 animate-pulse rounded-full bg-indigo-400/55" />
-      <div className="absolute bottom-[12%] right-[16%] h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl" />
+
+      {/* Desktop / tablet orbit lines */}
+      <div className="absolute left-[4%] top-[16%] hidden h-[360px] w-[760px] animate-[pulse_5s_ease-in-out_infinite] rounded-full border-2 border-dashed border-indigo-400/40 dark:border-cyan-300/20 md:block" />
+      <div className="absolute right-[5%] top-[9%] hidden h-[430px] w-[680px] animate-[spin_32s_linear_infinite] rounded-full border-2 border-dashed border-sky-400/35 dark:border-indigo-300/20 md:block" />
+
+      {/* Mobile-safe background accents: smaller, softer, and never wider than the viewport */}
+      <div className="absolute -left-16 top-28 h-52 w-52 rounded-full border border-dashed border-indigo-400/25 dark:border-cyan-300/15 md:hidden" />
+      <div className="absolute -right-20 top-48 h-64 w-64 rounded-full border border-dashed border-sky-400/25 dark:border-indigo-300/15 md:hidden" />
+
+      <div className="absolute left-[48%] top-[31%] h-2.5 w-2.5 animate-bounce rounded-full bg-cyan-400/50 md:h-3 md:w-3" />
+      <div className="absolute left-[9%] top-[25%] h-3 w-3 animate-pulse rounded-full bg-indigo-400/45 md:h-4 md:w-4" />
+      <div className="absolute bottom-[10%] right-[8%] h-52 w-52 rounded-full bg-cyan-300/15 blur-3xl md:right-[16%] md:h-72 md:w-72" />
     </div>
   );
 }
 
 function ProjectCard({ project, index }) {
-  const [flipped, setFlipped] = useState(false);
+  const [showArchitecture, setShowArchitecture] = useState(false);
+  const isFeatured = index === 0;
 
   return (
-    <Reveal delay={index * 80} className={index === 0 ? "md:col-span-2" : ""}>
-      <div className="group relative min-h-[440px] [perspective:1400px]">
-        <div
-          onClick={() => setFlipped(!flipped)}
-          className={`relative h-full min-h-[440px] cursor-pointer transition-transform duration-700 [transform-style:preserve-3d] ${
-            flipped ? "[transform:rotateY(180deg)]" : ""
-          }`}
-        >
-          <div className="absolute inset-0 rounded-[2rem] border border-white/80 bg-white/85 p-7 shadow-xl shadow-slate-200/60 backdrop-blur transition group-hover:-translate-y-1 dark:border-white/10 dark:bg-white/10 dark:shadow-none [backface-visibility:hidden]">
-            <div className="flex items-start justify-between gap-4">
-              <Pill>{project.tag}</Pill>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-950 shadow-sm transition hover:-translate-y-1 hover:bg-slate-950 hover:text-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white dark:hover:text-slate-950"
-                aria-label={`Open ${project.title} GitHub`}
+    <Reveal delay={index * 80} className={isFeatured ? "lg:col-span-2" : ""}>
+      <article
+        className={`group relative h-auto overflow-hidden rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-xl shadow-slate-200/60 backdrop-blur transition hover:-translate-y-1 dark:border-white/10 dark:bg-white/10 dark:shadow-none sm:p-7 lg:p-8 ${
+          isFeatured ? "lg:p-10" : ""
+        }`}
+      >
+        <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-300/10 blur-3xl" />
+        <div className="relative">
+          <div className="flex items-start justify-between gap-4">
+            <Pill>{project.tag}</Pill>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-950 shadow-sm transition hover:-translate-y-1 hover:bg-slate-950 hover:text-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white dark:hover:text-slate-950"
+              aria-label={`Open ${project.title} GitHub`}
+            >
+              <Icon name="github" className="h-5 w-5" />
+            </a>
+          </div>
+
+          {!showArchitecture ? (
+            <div className="pt-5">
+              <h3 className={`font-black leading-[1.05] tracking-tight ${isFeatured ? "text-3xl sm:text-4xl lg:text-5xl" : "text-3xl sm:text-4xl"}`}>
+                {project.title}
+              </h3>
+              <p className="mt-4 max-w-4xl text-base font-medium leading-8 text-slate-600 dark:text-slate-300 sm:text-lg sm:leading-9">
+                {highlightMetrics(project.description)}
+              </p>
+
+              {project.points && (
+                <div className="mt-6 grid gap-4 lg:grid-cols-3">
+                  {project.points.map(([label, text]) => (
+                    <div key={label} className="rounded-3xl bg-slate-950 p-5 text-white dark:bg-white/10">
+                      <p className="text-sm font-black text-cyan-200">{label}</p>
+                      <p className="mt-2 text-sm font-medium leading-6 text-slate-200">{highlightMetrics(text)}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.stack.map((item) => <Pill key={item}>{item}</Pill>)}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowArchitecture(true)}
+                className="mt-7 inline-flex items-center rounded-full bg-slate-950 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:-translate-y-1 hover:bg-indigo-600 dark:bg-white dark:text-slate-950 dark:hover:bg-cyan-300"
               >
-                <Icon name="github" className="h-5 w-5" />
-              </a>
+                View architecture →
+              </button>
             </div>
+          ) : (
+            <div className="pt-5">
+              <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-indigo-600 dark:text-cyan-300">Architecture</p>
+                  <h3 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">{project.title}</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowArchitecture(false)}
+                  className="w-fit rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-xs font-black text-slate-700 transition hover:bg-slate-950 hover:text-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white dark:hover:text-slate-950"
+                >
+                  Back to overview
+                </button>
+              </div>
 
-            <h3 className="mt-5 text-3xl font-black">{project.title}</h3>
-            <p className="mt-4 text-base font-medium leading-8 text-slate-600 dark:text-slate-300">{highlightMetrics(project.description)}</p>
+              <div className="mt-6 flex flex-wrap items-center gap-3 text-sm font-black text-slate-600 dark:text-cyan-200">
+                <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-cyan-400" />
+                <span>{project.status.state}</span>
+                <span className="text-slate-500 dark:text-slate-400">Ping: {project.status.ping}</span>
+                <span className="text-slate-500 dark:text-slate-400">Cache: {project.status.cache}</span>
+                <span className="text-slate-500 dark:text-slate-400">{project.status.throughput}</span>
+              </div>
 
-            {project.points && (
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
-                {project.points.map(([label, text]) => (
-                  <div key={label} className="rounded-3xl bg-slate-950 p-5 text-white dark:bg-white/10">
-                    <p className="text-sm font-black text-cyan-200">{label}</p>
-                    <p className="mt-2 text-sm font-medium leading-6 text-slate-200">{highlightMetrics(text)}</p>
+              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {project.architecture.map((node, nodeIndex) => (
+                  <div key={node} className="relative rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm font-black text-slate-800 shadow-sm dark:border-white/10 dark:bg-white/10 dark:text-white">
+                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-950 text-xs text-white dark:bg-cyan-300 dark:text-slate-950">
+                      {nodeIndex + 1}
+                    </span>
+                    {node}
                   </div>
                 ))}
               </div>
-            )}
 
-            <div className="mt-6 flex flex-wrap gap-2">{project.stack.map((item) => <Pill key={item}>{item}</Pill>)}</div>
-            <p className="mt-6 text-xs font-black uppercase tracking-[0.25em] text-indigo-600 dark:text-cyan-300">
-              Click card to view architecture →
-            </p>
-          </div>
-
-          <div className="absolute inset-0 rounded-[2rem] border border-white/10 bg-slate-950 p-7 text-white shadow-xl shadow-slate-200/60 dark:bg-white/10 dark:shadow-none [backface-visibility:hidden] [transform:rotateY(180deg)]">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-cyan-200">Architecture</p>
-                <h3 className="mt-4 text-3xl font-black">{project.title}</h3>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFlipped(false);
-                }}
-                className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white transition hover:bg-white hover:text-slate-950"
-              >
-                Back
-              </button>
+              <p className="mt-7 max-w-3xl text-sm font-medium leading-7 text-slate-600 dark:text-slate-300">
+                This view shows the system flow behind the project, so recruiters can quickly understand the data path, backend flow, caching layer, and deployment logic.
+              </p>
             </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm font-black text-cyan-200">
-              <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-cyan-300" />
-              <span>{project.status.state}</span>
-              <span className="text-slate-400">Ping: {project.status.ping}</span>
-              <span className="text-slate-400">Cache: {project.status.cache}</span>
-              <span className="text-slate-400">{project.status.throughput}</span>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              {project.architecture.map((node, nodeIndex) => (
-                <React.Fragment key={node}>
-                  <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm font-bold">
-                    {node}
-                  </div>
-                  {nodeIndex < project.architecture.length - 1 && (
-                    <span className="text-cyan-300">→</span>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-
-            <p className="mt-8 max-w-2xl text-sm font-medium leading-7 text-slate-300">
-              This view shows the system flow behind the project, so recruiters can quickly understand the data path, backend flow, caching layer, and deployment logic.
-            </p>
-          </div>
+          )}
         </div>
-      </div>
+      </article>
     </Reveal>
   );
 }
@@ -780,7 +796,7 @@ export default function App() {
 
           <section id="projects" className="mx-auto max-w-7xl px-5 py-20 scroll-mt-28">
             <SectionTitle label="Projects" title="Proof of systems, data, and product ownership." subtitle="Click any project card to flip it and view the system architecture behind it." />
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
               {projects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
             </div>
           </section>
@@ -869,7 +885,7 @@ export default function App() {
         </footer>
 
         {showTop && (
-          <button onClick={() => scrollTo("home")} className="fixed bottom-6 right-6 z-50 group flex h-14 w-14 items-center justify-center rounded-full border border-white/80 bg-white/85 text-slate-950 shadow-2xl shadow-slate-300/70 backdrop-blur-xl transition hover:-translate-y-1 hover:bg-slate-950 hover:text-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:shadow-none dark:hover:bg-white dark:hover:text-slate-950" aria-label="Scroll to top">
+          <button onClick={() => scrollTo("home")} className="fixed bottom-5 right-4 z-50 group flex h-12 w-12 sm:bottom-6 sm:right-6 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/80 bg-white/85 text-slate-950 shadow-2xl shadow-slate-300/70 backdrop-blur-xl transition hover:-translate-y-1 hover:bg-slate-950 hover:text-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:shadow-none dark:hover:bg-white dark:hover:text-slate-950" aria-label="Scroll to top">
             <span className="text-2xl font-black leading-none transition group-hover:-translate-y-0.5">⌃</span>
           </button>
         )}
